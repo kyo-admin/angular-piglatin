@@ -1,0 +1,73 @@
+<div class="container-fluid ">
+
+  <form (ngSubmit)="submit()" #forma="ngForm">
+    
+    <label for="name"><b>Palabra: </b></label>
+  
+    <input
+      type="text"
+      #name="ngModel"
+      [(ngModel)]="register.name"
+      placeholder="Introduzca su nombre de pila"
+      name="name"
+      minlength="3"
+      class="form-control"
+      required
+      [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}"
+    />
+
+    <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div *ngIf="name?.errors?.['minlength']">
+        Introduzca una palabra de al menos 3 letras
+      </div>
+      <div *ngIf="name?.errors?.['required']">
+        Introduzca un nombre de pila Válido
+      </div>
+    </div>
+
+    <br>
+
+		<div class="row">
+			<div class="col-lg">
+				<button 
+          type="submit" 
+          [disabled]="!forma.valid" 
+          class="signup-btn">
+            pig-translate
+        </button>
+			</div>
+		</div>
+  </form>
+  <!---------------------------------------------------------->
+  <br>
+    <div class="col-lg">
+      <h1 style="color:#1976d2">
+
+         {{this.register.response | lowercase }}
+      </h1>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
